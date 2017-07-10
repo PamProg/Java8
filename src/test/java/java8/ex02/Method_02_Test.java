@@ -16,9 +16,17 @@ public class Method_02_Test {
     interface IDao {
         List<Person> findAll();
 
-        // TODO créer une méthode String format()
-        // TODO la méthode retourne une chaîne de la forme [<nb_personnes> persons]
-        // TODO exemple de résultat : "[14 persons]", "[30 persons]"
+        default String format() {
+        	StringBuilder nbPersons = new StringBuilder("[");
+        	
+        	int i = 0;
+        	for(Person p : this.findAll()) {
+        		i++;
+        	}
+        	
+        	nbPersons.append(i).append(" persons]");
+        	return nbPersons.toString();
+        }
     }
     // end::IDao[]
 
@@ -31,11 +39,14 @@ public class Method_02_Test {
         public List<Person> findAll() {
             return people;
         }
-
-        // TODO redéfinir la méthode String format()
-        // TODO la méthode retourne une chaîne de la forme DaoA[<nb_personnes> persons]
-        // TODO exemple de résultat : "DaoA[14 persons]", "DaoA[30 persons]"
-        // TODO l'implémentation réutilise la méthode format() de l'interface
+        
+        public String format() {
+    		StringBuilder nbPersons = new StringBuilder("DaoA");
+        	
+        	nbPersons.append(IDao.super.format());
+        	
+        	return nbPersons.toString();
+        }
 
     }
     // end::DaoA[]
@@ -44,10 +55,9 @@ public class Method_02_Test {
     public void test_daoA_format() throws Exception {
 
         DaoA daoA = new DaoA();
+        
+        String result = daoA.format();
 
-        // TODO invoquer la méthode format() pour que le test soit passant
-        String result = null;
-
-        "DaoA[20 persons]".equals(result);
+        assert "DaoA[20 persons]".equals(result);
     }
 }
