@@ -17,15 +17,7 @@ public class Method_02_Test {
         List<Person> findAll();
 
         default String format() {
-        	StringBuilder nbPersons = new StringBuilder("[");
-        	
-        	int i = 0;
-        	for(Person p : this.findAll()) {
-        		i++;
-        	}
-        	
-        	nbPersons.append(i).append(" persons]");
-        	return nbPersons.toString();
+        	return "[" + findAll().size()+" persons]";
         }
     }
     // end::IDao[]
@@ -42,9 +34,7 @@ public class Method_02_Test {
         
         public String format() {
     		StringBuilder nbPersons = new StringBuilder("DaoA");
-        	
         	nbPersons.append(IDao.super.format());
-        	
         	return nbPersons.toString();
         }
 
