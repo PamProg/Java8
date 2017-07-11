@@ -19,35 +19,35 @@ public class Optional_01_Test {
     class NotFountException extends RuntimeException {}
 
 
-//    // tag::findMethod[]
-//    <T> Optional<T> find(List<T> list, Predicate<T> predicate) {
-//    	Optional<T> result = Optional.empty();
-//    	
-//    	for (T p : list) {
-//    		if (predicate.test(p)) {
-//    			result = Optional.of(p);
-//    			break;
-//    		}
-//    	}
-//    	
-//    	return result;
-//    }
-//    // end::findMethod[]
-    
     // tag::findMethod[]
     <T> Optional<T> find(List<T> list, Predicate<T> predicate) {
-        T result = null;
-
-        for (T p : list) {
-            if (predicate.test(p)) {
-                result = p;
-                break;
-            }
-        }
-
-        return Optional.ofNullable(result);
+    	Optional<T> result = Optional.empty();
+    	
+    	for (T p : list) {
+    		if (predicate.test(p)) {
+    			result = Optional.of(p);
+    			break;
+    		}
+    	}
+    	
+    	return result;
     }
     // end::findMethod[]
+    
+//    // tag::findMethod[]
+//    <T> Optional<T> find(List<T> list, Predicate<T> predicate) {
+//        T result = null;
+//
+//        for (T p : list) {
+//            if (predicate.test(p)) {
+//                result = p;
+//                break;
+//            }
+//        }
+//
+//        return Optional.ofNullable(result);
+//    }
+//    // end::findMethod[]
     
     @Test
     public void test_optional_found() throws Exception {
