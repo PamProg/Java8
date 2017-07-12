@@ -36,10 +36,10 @@ public class Stream_01_Test {
         List<Pizza> pizzas = new Data().getPizzas();
 
         // TODO valider si au moins une pizza à un prix >= 1300
-        Boolean result1 = pizzas.stream().filter(p -> p.getPrice() >= 1300).findAny().isPresent();
+        Boolean result1 = pizzas.stream().anyMatch(p -> p.getPrice() >= 1300);
 
         // TODO valider si au moins une pizza à un prix >= 2000
-        Boolean result2 = pizzas.stream().filter(p -> p.getPrice() >= 2000).findAny().isPresent();
+        Boolean result2 = pizzas.stream().anyMatch(p -> p.getPrice() >= 2000);
 
         assertThat(result1, is(true));
         assertThat(result2, is(false));
