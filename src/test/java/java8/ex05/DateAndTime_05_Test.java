@@ -18,7 +18,7 @@ public class DateAndTime_05_Test {
     public void test_duration() throws Exception {
 
         // TODO créer une heure à 12h30
-        LocalTime time1 = null;
+        LocalTime time1 = LocalTime.of(12, 30);
 
         // TODO créer une heure à 16h32
         LocalTime time2 = null;
